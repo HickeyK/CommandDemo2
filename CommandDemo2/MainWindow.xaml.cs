@@ -38,11 +38,42 @@ namespace CommandDemo2
         }
 
         private bool CanNavigateToPreviousTab
-        { get { if (tabControl != null) { return tabControl.SelectedIndex != 0; } return false; } }
-        private void OnNextPageCommandExecute(object sender, ExecutedRoutedEventArgs e) { if (CanNavigateToNextTab) { tabControl.SelectedIndex += 1; e.Handled = true; } }
-        private void OnPreviousPageCommandExecute(object sender, ExecutedRoutedEventArgs e) { if (CanNavigateToPreviousTab) { tabControl.SelectedIndex -= 1; e.Handled = true; } }
-        private void CanNextPageCommandExecute(object sender, CanExecuteRoutedEventArgs e) { e.CanExecute = CanNavigateToNextTab; e.Handled = true; }
-        private void CanPreviousPageCommandExecute(object sender, CanExecuteRoutedEventArgs e) { e.CanExecute = CanNavigateToPreviousTab; e.Handled = true; }
+        {
+            get
+            {
+                if (tabControl != null)
+                {
+                    return tabControl.SelectedIndex != 0;
+                }
+                return false;
+            }
+        }
+
+        private void OnNextPageCommandExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (CanNavigateToNextTab)
+            {
+                tabControl.SelectedIndex += 1; e.Handled = true;
+            }
+        }
+        private void OnPreviousPageCommandExecute(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (CanNavigateToPreviousTab)
+            {
+                tabControl.SelectedIndex -= 1; e.Handled = true;
+            }
+        }
+
+        private void CanNextPageCommandExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = CanNavigateToNextTab;
+            e.Handled = true;
+        }
+        private void CanPreviousPageCommandExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = CanNavigateToPreviousTab;
+            e.Handled = true;
+        }
 
 
     }

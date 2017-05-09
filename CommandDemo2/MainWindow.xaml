@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CommandDemo2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    
+        Title="MainWindow"
+        Height="350"
+        Width="525">
+
     <Window.CommandBindings>
         <CommandBinding Command="NavigationCommands.PreviousPage"
                         CanExecute="CanPreviousPageCommandExecute"
@@ -15,23 +17,42 @@
                         CanExecute="CanNextPageCommandExecute"
                         Executed="OnNextPageCommandExecute" />
     </Window.CommandBindings>
-    
+
+    <Window.InputBindings>
+        <KeyBinding Key="Left"
+                    Modifiers="Ctrl"
+                    Command="NavigationCommands.PreviousPage" />
+        <KeyBinding Key="Right"
+                    Modifiers="Ctrl"
+                    Command="NavigationCommands.NextPage" />
+
+    </Window.InputBindings>
     <Grid>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                <Button Width="120" Height="40" Content="Previous Tab" Margin="5"></Button>
-                <Button Width="120" Height="40" Content="Next Tab" Margin="5"></Button>
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal">
+                <Button Width="120"
+                        Height="40"
+                        Content="Previous Tab"
+                        Margin="5"
+                        Command="NavigationCommands.PreviousPage"></Button>
+                <Button Width="120"
+                        Height="40"
+                        Content="Next Tab"
+                        Margin="5"
+                        Command="NavigationCommands.NextPage"></Button>
             </StackPanel>
-            <TabControl Name="tabControl" VerticalAlignment="Stretch">
+            
+            <TabControl Name="tabControl">
                 <TabItem Header="Page 1">
-                    
+
                 </TabItem>
+                
                 <TabItem Header="Page 2">
 
                 </TabItem>
 
             </TabControl>
         </DockPanel>
-        
     </Grid>
 </Window>
